@@ -34,7 +34,7 @@ function TextWithImage(props) {
       </div>
       <div className={stylesBanner['image-banner_content']}>
             <h2>Twin Flex</h2>
-            <p>Twin Flex is perfectly symmetrical from tip to tail for a balanced ride that's equally versatile regular or switch</p>
+            <p>Twin Flex is perfectly symmetrical from tip to tail for a balanced ride thats equally versatile regular or switch</p>
         </div>
     </div>
     </div>

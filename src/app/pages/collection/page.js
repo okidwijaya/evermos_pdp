@@ -1,13 +1,12 @@
 'use client';
 import ProductCard from '@/components/card/ProductCard'
 import React, { useEffect, useState } from 'react'
-import styles from '@/styles/global.module.scss'
 import stylesProduct from '@/styles/global.module.scss'
 import NavBar from '@/components/navigation/NavBar';
 import CollectionBanner from '@/components/card/CollectionBanner';
 import { getAllProduct } from "@/utils/product";
 
-function page() {
+function Page() {
   const [products, setProducts] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
@@ -21,6 +20,7 @@ function page() {
         console.error(err);
       });
   },[]);
+
   return (
     <div style={{ position: "relative", minHeight: "100vh" }}>
       <NavBar/>
@@ -38,4 +38,4 @@ function page() {
   )
 }
 
-export default page
+export default Page

@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import imagePlaceholder from "@/pictures/images/default-placeholder.png";
 import bannerdetail1 from "@/pictures/images/pdp_detail1.svg";
 import bannerdetail2 from "@/pictures/images/pdp_detail2.svg";
@@ -19,8 +19,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import loadingsvg from "@/pictures/svg/tube-spinner.svg";
 
-function page({ params }) {
-  const { productId } = React.use(params);
+function Page({ params }) {
+  const { productId } = params;
   const [customSettings, setCustomSettings] = useState({});
   const [product, setProduct] = useState(null);
   const [products, setProducts] = useState([]);
@@ -28,8 +28,6 @@ function page({ params }) {
   const [isLoading, setIsLoading] = useState(true);
   const [collapsibleDescription, setCollapsibleDescription] = useState(true);
   const [collapsibleSize, setCollapsibleSize] = useState(false);
-  const [nav1, setNav1] = useState(null);
-  const [nav2, setNav2] = useState(null);
   console.log(productId);
 
   useEffect(() => {
@@ -43,7 +41,7 @@ function page({ params }) {
       .catch((err) => {
         console.error(err);
       });
-  }, []);
+  }, [productId]);
 
   useEffect(() => {
     getAllProduct()
@@ -313,7 +311,7 @@ function page({ params }) {
                       distracted by the readable content of a page when looking
                       at its layout. The point of using Lorem Ipsum is that it
                       has a more-or-less normal distribution of letters, as
-                      opposed to using 'Content here, content here', making it
+                      opposed to using Content here, content here, making it
                       look like readable English.
                     </p>
                   </div>
@@ -393,4 +391,4 @@ function page({ params }) {
   );
 }
 
-export default page;
+export default Page;
