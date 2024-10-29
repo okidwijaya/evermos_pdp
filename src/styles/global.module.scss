@@ -1,0 +1,95 @@
+@use 'sass:map';
+@use '../styles/variables' as vars;
+
+@keyframes slideInFromLeft {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@mixin respond($breakpoint) {
+  @media (min-width: map-get(vars.$breakpoints, $breakpoint)) {
+    @content;
+  }
+}
+
+@mixin card-width($width, $max) {
+    width: $width;
+    max-width: $max;
+}
+
+@mixin make-grid($columns, $size, $gutter) {
+    display: grid;
+    grid-template-columns: repeat($columns, $size);
+    grid-gap: $gutter;
+}
+
+.grid_cols-1 {
+    @include make-grid(1, 1fr, 1rem);
+}
+
+.grid_cols-2 {
+    @include make-grid(2, 1fr, 1rem);
+  }
+  
+  .btn{
+    width: 100%;
+    max-width: 400px;
+    border-radius: map-get(vars.$border-round, small);
+    border: map-get(vars.$border-color, primary);
+    color: map-get(vars.$base-theme-color, primary);
+    background-color: map-get(vars.$base-theme-color, tertiary);
+    margin: 2px 0;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+
+  .home_collectionList{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    padding: 0 0 2rem 0;         
+
+    a{
+        text-align: right;
+        border-bottom: 1px solid transparent;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: 0;
+    }
+
+    a:hover{
+        border-bottom: map-get(vars.$border-color, primary);
+    }
+
+    h3{
+        font-size: map-get(vars.$base-theme-font, mediumlarge);
+    }
+
+    @media screen and (max-width: map-get(vars.$breakpoints, large)) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+  }
+  
+// collection page styles
+.product-grid{
+  animation: 1s ease-out 0s 1 slideInFromLeft;
+  @include make-grid(4, 1fr, 0.5rem);
+
+  @media screen and (max-width: map-get(vars.$breakpoints, large)) {
+    @include make-grid(2, 1fr, 1rem);
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+// @forward 'base-theme-color' as basethemecolor;
+// @forward 'global.module';
+// @forward 'global-variables';

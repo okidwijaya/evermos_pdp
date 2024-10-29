@@ -1,0 +1,80 @@
+@use '../global.module.scss' as *;
+@use '../variables' as vars;
+
+@keyframes slideInFromRight {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+.image-with-text_wrapper{
+    @include make-grid(2, 1fr, 1rem);
+    
+    .imageWithText_left{
+        animation: 1s ease-out 0s 1 slideInFromLeft;
+    }
+    
+    .imageWithText_right{
+        animation: 1s ease-out 0s 1 slideInFromRight;
+    }
+
+    .imageBanner_wrapper{
+        display: block;
+        position: relative;
+        margin: 1rem auto;
+        border-radius: map-get(vars.$border-round, small);
+        @include card-width(100%, 750px);
+        background-color: map-get(vars.$base-theme-color, secondary);
+        padding: 1rem ;
+
+        img{
+            border-radius: map-get(vars.$border-round, small);
+            position: unset !important;
+            top: unset !important;
+            left: unset !important;
+            display: block !important;
+            inset: unset !important;
+            width: 100% !important;
+            height: 400px !important;
+            object-fit: cover !important;
+        }
+        
+        .image-banner_content{
+            margin: 1rem 0 0 0;
+            z-index: 4;
+            width: 100%;
+            display: flex;
+            height: fit-content;
+            justify-content: flex-start;
+            align-items: flex-start;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            gap: 1rem;
+        }
+
+        .image-banner_cta_button{
+            box-shadow: none;
+            @include make-grid(2, 1fr, 1rem);
+            color: #FFFFFF;
+            padding: 1rem 0;
+        }
+    }
+
+    @media screen and (max-width: map-get(vars.$breakpoints, large)) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+        @include make-grid(1, 1fr, 1rem);
+    }
+}

@@ -1,0 +1,324 @@
+@use '../global.module.scss' as *;
+@use '../variables' as vars;
+
+@keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+
+@keyframes slideInFromTop {
+    0% {
+      transform: translateY(-100%);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+.product-detail{
+    .pdp-content-container{
+        @include make-grid(2, 1fr, 1rem);
+        padding: 2rem 1rem;
+        align-items: start;
+        
+        .pdp_left-content{
+            animation: 1s ease-in 0s 1 slideInFromTop;
+            height: 100%;
+            @include card-width(100%, 100%);
+            
+            .image-container {
+                @include make-grid(1, 1fr, 1rem);
+                width: 100%;
+
+                .pdp_imgDetail{
+                    position: relative;
+
+                    img {
+                        position: unset !important;
+                        top: unset !important;
+                        left: unset !important;
+                        display: block !important;
+                        inset: unset !important;
+                        width: 100%;
+                        height: 100%;
+                        object-fit: contain;
+                    }
+
+                    @media screen and (max-width: map-get(vars.$breakpoints, large)) {
+                        img{
+                            height: 345px;
+                        }
+                    }
+                }
+            }
+            
+            .pdp_imgDetail{
+                position: relative;
+
+                img {
+                    position: unset !important;
+                    top: unset !important;
+                    left: unset !important;
+                    display: block !important;
+                    inset: unset !important;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: contain;
+                }
+
+                @media screen and (max-width: map-get(vars.$breakpoints, large)) {
+                    img{
+                        height: 345px;
+                    }
+                }
+            }
+
+            @media screen and (max-width: map-get(vars.$breakpoints, large)) {
+                height: 380px;
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+
+        .pdp_right-content{
+            animation: 1s ease-out 0s 1 slideInFromLeft;
+            padding: 0 1rem 1rem 1rem;
+            @include card-width(100%, 450px);
+            @include make-grid(1, 1fr, 1.5rem);
+            align-items: start;
+            justify-content: start;
+            align-content: center;
+
+            .pdp_right-content_head{
+                @include make-grid(1, 1fr, 0);
+                align-items: center;
+                align-content: center;
+                justify-content: start;
+
+                .pdp_title{
+                    text-align: left;
+                    font-size: map-get(vars.$base-theme-font, xl);
+                    font-weight: 600;
+                }
+                .pdp_price{
+                    text-align: left;
+                    font-weight: 600;
+                    margin-top: 1rem;
+                    font-size: map-get(vars.$base-theme-font, mediumlarge);
+                }
+
+                .pdp_price s{
+                    text-align: left;
+                    font-weight: 400;
+                    margin-top: 1rem;
+                    margin-right: 1rem;
+                    font-size: map-get(vars.$base-theme-font, heading);
+                }
+            }
+
+            .pdp_variant-container{
+                @include make-grid(1, 1fr, 0);
+                align-items: center;
+                align-content: center;
+                justify-content: start;
+
+                .pdp_variant-header{
+                    text-align: left;
+                }
+
+                .pdp_variant-content{
+                    box-shadow: none;
+                    @include make-grid(4, 24px, 0.5rem);
+                    color: #FFFFFF;
+
+                    .btn{
+                        width: 100%;
+                        max-width: 24px;
+                        height: 24px;
+                    }
+                }
+            }
+
+            
+            .pdp_qty-wrapper{
+                @include make-grid(1, 1fr, 0);
+                align-items: center;
+                align-content: center;
+                justify-content: start;
+
+                .pdp_qty-heading{
+
+                }
+
+                .pdp_qty-container{
+                    @include make-grid(3, 1fr, 0.5rem);
+                    @include card-width(100%, 180px);
+                    align-items: center;
+                    align-content: center;
+                    justify-content: center;
+                    justify-items: center;
+                    padding: 0 2px;
+                    border-radius: map-get(vars.$border-round, small);
+                    border: map-get(vars.$border-color, primary);
+
+                    .btn{
+                        border: none;
+                        font-weight: 600;
+                    }
+
+                    .btn:hover{
+                        background-color: map-get(vars.$base-theme-color, secondary);
+                    }
+
+                    input{
+                        border: none;
+                        width: 100%;
+                        box-shadow: none;
+                        color: map-get(vars.$base-theme-color, primary);
+                        text-align: center;
+                        background-color: #FFFFFF;
+                    }
+
+                    input::-webkit-outer-spin-button,
+                    input::-webkit-inner-spin-button {
+                        -webkit-appearance: none;
+                        margin: 0;
+                    }
+
+                    input[type=number] {
+                        -moz-appearance: textfield;
+                    }
+                }
+            }
+            
+            .pdp_cta-container{
+                display: grid;
+                grid-template-columns: 0.2fr 0.8fr;
+                gap: 1rem;
+                
+                .btn{
+                    padding: 1rem;
+                }
+
+                .btn.add_to_wishlist{
+                    padding: 0;
+                }
+                
+                .btn.add_to_cart:hover{
+                    border: 2px solid transparent;
+                }
+
+                .btn.add_to_cart:hover{
+                    background-color: map-get(vars.$base-theme-color, quaternary);
+                    border: 2px solid map-get(vars.$base-theme-color, primary);
+                }
+                .btn.add_to_wishlist:hover{
+                    background-color: map-get(vars.$base-theme-color, primary);
+                    color: map-get(vars.$base-theme-color, quaternary);
+                }
+
+                .btn.add_to_wishlist:hover svg{
+                    fill: map-get(vars.$base-theme-color, quaternary);
+                }
+            }
+            
+            .buy_now{
+                padding: 1rem;
+                background-color: map-get(vars.$base-theme-color, Quinary);
+                color: map-get(vars.$base-theme-color, tertiary);
+                max-width: 100%;
+            }
+            
+            .btn.buy_now:hover{
+                background-color: map-get(vars.$base-theme-color, tertiary);
+                color: map-get(vars.$base-theme-color, Quinary);
+                border: 2px solid map-get(vars.$base-theme-color, primary);
+            }
+            
+            .pdp_collapsible{
+                @include card-width(100%, 100%);
+                
+                .pdp_collapsible-head{
+                    display: grid;
+                    grid-template-columns: 1fr auto;
+                    @include card-width(100%, 100%);
+                    background-color: map-get(vars.$base-theme-color, tertiary);
+                    padding: 0.5rem 1rem;
+                    margin-bottom: 0.25rem;
+                    border: map-get(vars.$border-color, primary);
+                    border-radius: map-get(vars.$border-round, small);
+                    cursor: pointer;
+                }
+
+                .pdp_collapsible-head:hover{
+                    background-color: map-get(vars.$base-theme-color, quaternary);
+                    border: 2px solid map-get(vars.$base-theme-color, primary);
+                }
+                
+                .pdp_collapsible-content{
+                    padding: 0.5rem 1rem;
+                }
+
+                .pdp_collapsibleContent{
+                    padding: 0.5rem 1rem;
+                }
+
+                img{
+                    width: 100%;
+                    height: auto;
+                    object-fit: contain;
+                    position: unset !important;
+                    top: unset !important;
+                    left: unset !important;
+                    display: block !important;
+                    inset: unset !important;
+                }
+            }
+
+            @media screen and (max-width: map-get(vars.$breakpoints, large)) {
+                padding-left: 0;
+                padding-right: 0;
+            }
+        }
+        
+        @media screen and (max-width: map-get(vars.$breakpoints, large)) {
+            @include make-grid(1, 1fr, 1rem);
+        }
+    }
+}
+.pdp_product-recommendation{
+    animation: 1s ease-out 0s 1 slideInFromLeft;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    padding: 2rem 0;         
+
+    a{
+        text-align: right;
+        border-bottom: 1px solid transparent;
+        width: fit-content;
+        margin-left: auto;
+        margin-right: 0;
+    }
+
+    a:hover{
+        border-bottom: map-get(vars.$border-color, primary);
+    }
+
+    h3{
+        font-size: map-get(vars.$base-theme-font, heading);
+    }
+
+    @media screen and (max-width: map-get(vars.$breakpoints, large)) {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
