@@ -31,11 +31,29 @@
         z-index: 4;
         width: 100%;
         display: flex;
-        flex-direction: column;
-        flex-wrap: nowrap;
         height: 100%;
         justify-content: center;
-        align-items: center;
+        padding: 2rem;
+        align-items: flex-start;
+        flex-direction: column;
+        flex-wrap: nowrap;
+
+        h2{
+            font-size: map-get(vars.$base-theme-font, xxxl);
+            @include card-width(100%, 450px);
+        }
+
+        p{
+            @include card-width(100%, 450px);
+        }
+        
+        @media screen and (max-width: map-get(vars.$breakpoints, large)) {
+            align-items: center;
+            
+            h2{
+                font-size: map-get(vars.$base-theme-font, large);
+            }
+        }
     }
 
     .image-banner_cta_button{
@@ -43,5 +61,16 @@
         @include make-grid(2, 1fr, 1rem);
         color: #FFFFFF;
         padding: 1rem 0;
+
+        .btn_viewall:hover{
+            background-color: map-get(vars.$base-theme-color, quaternary);
+            font-weight: 400;
+        }
+        
+        .btn_shopnow:hover{
+            font-weight: 400;
+            background-color: map-get(vars.$base-theme-color, primary);
+            color: map-get(vars.$base-theme-color, quaternary);
+        }
     }
 }

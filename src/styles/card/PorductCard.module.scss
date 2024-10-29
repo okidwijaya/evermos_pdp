@@ -29,9 +29,9 @@
         border-bottom: map-get(vars.$border-color, primary);
     }
 
-    &:hover img {
-        transform: scale(1.05);
-    }
+    // &:hover img {
+    //     transform: scale(1.05);
+    // }
     
     img{
         width: 100%;
@@ -40,6 +40,10 @@
         border-radius: map-get(vars.$border-round, small);
         transform-origin: 50% 50%;
         transition: transform .25s, visibility .25s ease-in;
+
+        &:hover{
+            transform: scale(1.05);
+        }
     }
     
     .product-card_top-section{
@@ -47,6 +51,19 @@
         width: 100%;
         top: 1rem;
         left: 0.5rem;
+        z-index: 4;
+
+        .wishlist_btn{
+            cursor: pointer;
+        }
+
+        .wishlist_btn:hover{
+            // background-color: red;
+        }
+
+        .onWishlist svg, .onWishlist svg path{
+            fill: red;
+        }
     }
     
     .product-card_cta_button{
@@ -54,6 +71,21 @@
         @include make-grid(2, 1fr, 1rem);
         color: #FFFFFF;
         padding: 1rem 0;
+
+        .btn_addcart:hover{
+            background-color: map-get(vars.$base-theme-color, tertiary);
+            font-weight: 600;
+            color: map-get(vars.$base-theme-color, primary);
+            border: 2px solid #121212;
+            padding-top: 7px;
+            padding-bottom: 7px;
+        }
+        
+        .btn_buynow:hover{
+            font-weight: 600;
+            background-color: map-get(vars.$base-theme-color, primary);
+            color: map-get(vars.$base-theme-color, quaternary);
+        }
         
         @media screen and (max-width: map-get(vars.$breakpoints, large)) {
             @include make-grid(1, 1fr, 1rem);

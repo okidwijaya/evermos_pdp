@@ -1,12 +1,16 @@
 import React, {useState} from 'react'
 import styles from '@/styles/card/PorductCard.module.scss'
 import Image from 'next/image'
-import imagePlaceholder from '@/pictures/images/default-placeholder.png'
 import IconComponent from '../icon/IconComponents'
 import Link from 'next/link'
 
 function ProductCard(props) {
     const[productVariantArray, setProductVariantArray] = useState();
+    const[productWishlist, setProductWishlist] = useState(false);
+
+    const addToWishlist = () => {
+        productWishlist ? setProductWishlist(false) : setProductWishlist(true);
+    }
 
     const variantColor = [];
     const productVariants = (itemVariant) => {
@@ -25,7 +29,7 @@ function ProductCard(props) {
                 <p className={`${styles.label} ${styles.label_new}'`}>New</p>
                 <p className={`${styles.label} ${styles.label_preOrder}']`}>Pre-Order</p>
             </div>
-            <button className={styles['wishlist_btn']}>
+            <button type='button' onClick={()=> addToWishlist()} className={`${styles.wishlist_btn} ${productWishlist ? styles.onWishlist : ''}`}>
                 <IconComponent
                 name="CiHeart"
                 size="24px"
@@ -58,8 +62,8 @@ function ProductCard(props) {
                 {props.variant.length > 0 && props.variant[0].compare_at_price !=  null && props.variant[0].compare_at_price !=  "" && props.variant[0].compare_at_price !=  undefined ? <span className={styles['compare-at-price']}>${props.variant[0].compare_at_price}</span> : <></>} 
             </p>
             <div className={styles["product-card_cta_button"]}>
-                <button className={styles["btn"]}>Buy Now</button>
-                <button className={styles["btn"]}>Add to Cart</button>
+                <button className={`${styles.btn} ${styles.btn_buynow}`}>Buy Now</button>
+                <button className={`${styles.btn} ${styles.btn_addcart}`}>Add to Cart</button>
             </div>
         </div>
     </div>

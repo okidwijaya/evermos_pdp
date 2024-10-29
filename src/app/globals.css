@@ -215,8 +215,8 @@ nav.grid.grid_cols-3.w-full {
 
 @media screen and (max-width: 1024px) {
   body{
-    padding-left: 0.2rem;
-    padding-right: 0.2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
 }
 
