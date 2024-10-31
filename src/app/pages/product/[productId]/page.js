@@ -226,7 +226,7 @@ export default function Page({ params }) {
                 <p className={styles["pdp_variant-header"]}>Variant</p>
                 <div
                   style={{
-                    gridTemplateColumns: `repeat(${product.variants.length}, 24px)`,
+                    display: 'flex', gridTemplateColumns: `repeat(${product.variants.length}, 24px)`, gap: '0.5rem'
                   }}
                   className={styles["pdp_variant-content"]}
                 >
@@ -235,7 +235,7 @@ export default function Page({ params }) {
                       <button
                         type="button"
                         style={{ backgroundColor: `${item.option1}` }}
-                        className={styles["btn"]}
+                        className={styles["btn_variant"]}
                         key={index}
                       ></button>
                     ))

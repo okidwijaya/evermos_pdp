@@ -47,6 +47,24 @@
     cursor: pointer;
   }
 
+  .btn_variant{
+    // width: 100%;
+    width: 24px;
+    height: 24px;
+    border-radius: 24px;
+    border: none !important;
+    color: map-get(vars.$base-theme-color, primary);
+    background-color: map-get(vars.$base-theme-color, tertiary);
+    margin: 2px 0;
+    padding: 0.5rem;
+    opacity: 0.75;
+    cursor: pointer;
+    
+    &:first-child{
+      opacity: 1;
+    }
+  }
+
   .home_collectionList{
     display: grid;
     grid-template-columns: 1fr 1fr;
