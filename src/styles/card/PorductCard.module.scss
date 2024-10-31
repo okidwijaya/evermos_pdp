@@ -14,7 +14,7 @@
     animation: 1s ease-out 0s 1 slideInFromLeft;
     @include make-grid(1, 1fr, 1rem);
     position: relative;
-    // padding: 1rem;
+    padding: 0 0.5rem;
     @include card-width(100%, 340px);
 
     .product_title{
@@ -84,8 +84,8 @@
         }
         
         .btn_buynow{
-            background-color: map-get(vars.$base-theme-color, defaultWhite);
-            color: map-get(vars.$base-theme-color, quinary);
+            color: map-get(vars.$base-theme-color, defaultWhite);
+            background-color: map-get(vars.$base-theme-color, Quinary);
             
             &:hover{
                 background-color: map-get(vars.$base-theme-color, primary);
@@ -105,10 +105,9 @@
             //     border-radius: map-get(vars.$border-round, small);
             // }
         }
-
         
         @media screen and (max-width: map-get(vars.$breakpoints, large)) {
-            @include make-grid(1, 1fr, 1rem);
+            @include make-grid(1, 1fr, 0);
         }
     }
     
@@ -133,7 +132,11 @@
         border: map-get(vars.$border-color, primary);
         background-color: map-get(vars.$base-theme-color, primary);
         color: map-get(vars.$base-theme-color, tertiary);
-        padding: 1px 8px;
+        padding: 2px 8px;
+        font-family: "Montserrat", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: 400;
+        font-style: normal;
         font-size: map-get(vars.$base-theme-font, base);
     }
 

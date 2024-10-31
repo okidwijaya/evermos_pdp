@@ -62,8 +62,8 @@ function ProductCard(props) {
                 {props.variant.length > 0 && props.variant[0].compare_at_price !=  null && props.variant[0].compare_at_price !=  "" && props.variant[0].compare_at_price !=  undefined ? <span className={styles['compare-at-price']}>${props.variant[0].compare_at_price}</span> : <></>} 
             </p>
             <div className={styles["product-card_cta_button"]}>
-                <button className={`${styles.btn} ${styles.btn_addcart}`}>Add to Cart</button>
-                <button className={`${styles.btn} ${styles.btn_buynow}`}>Buy Now</button>
+                <Link href={`/pages/product/${props.productId}`}><button type='button' className={`${styles.btn} ${styles.btn_addcart}`}>Add to Cart</button></Link>
+                <Link href={`/pages/product/${props.productId}`}><button type='button' className={`${styles.btn} ${styles.btn_buynow}`}>Buy Now</button></Link>
             </div>
         </div>
     </div>

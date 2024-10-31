@@ -6,6 +6,23 @@
     height: 400px;
     @include card-width(100%, 100%);
 
+    .collection-banner_content{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        width: 100%;
+        align-items: flex-start;
+        justify-content: center;
+        max-width: 600px;
+        margin: auto;
+
+        h2, p{
+            width: 100%;
+            max-width: 400px;
+            text-align: left;
+        }
+    }
+
     .image-container {
         position: relative;
         width: 100%;
@@ -16,5 +33,15 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
+        border-radius: 4px;
+    }
+
+    @media screen and (max-width: map-get(vars.$breakpoints, large)) {
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 1rem;
+        align-items: flex-start;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
     }
 }

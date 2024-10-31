@@ -17,13 +17,13 @@ function MenuDrawer() {
               </Link>
             </li>
             <li className="drawer-menu_list--item">
-              <Link href="/pages">
-                Portofolio
+              <Link href="/pages/collection">
+                New Arrivals
               </Link>
             </li>
             <li className="drawer-menu_list--item">
-              <Link href="pages/">
-                Article
+              <Link href="/pages/collection">
+                Best Seller
               </Link>
             </li>
         </ul>

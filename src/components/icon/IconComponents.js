@@ -13,17 +13,22 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { GoDotFill } from "react-icons/go";
 import { CiImageOff, CiHeart } from "react-icons/ci";
 import { FaRegHeart } from "react-icons/fa";
+import { LuSettings2 } from "react-icons/lu";
 import { MdCheckBoxOutlineBlank, MdAdd, MdUploadFile, MdAddBox  } from "react-icons/md";
+import { MdOutlineArrowForwardIos,MdOutlineArrowBackIosNew } from "react-icons/md";
 
 function IconComponent({ name, size = '1.5em', color = 'black', className = '' }) {
     const iconsRegistration = {
         HiHome,
+        MdOutlineArrowForwardIos,
+        MdOutlineArrowBackIosNew,
         RiAddBoxFill,
         MdAddBox,
         FaRegHeart,
         MdCheckBoxOutlineBlank,
         IoMdCheckboxOutline,
         CiImageOff,
+        LuSettings2,
         MdAdd,
         MdUploadFile,
         IoMdHeartEmpty,

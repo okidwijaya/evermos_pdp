@@ -1,7 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import MenuDrawer from "@/components/navigation/DrawerMenu";
-import IconComponent from "@/components/icon/IconComponents";
 import Link from "next/link";
 import ImageBanner from "@/components/banner/ImageBanner";
 import stylesProduct from "@/styles/global.module.scss";
