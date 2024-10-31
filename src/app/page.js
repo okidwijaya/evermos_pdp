@@ -13,17 +13,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import loadingsvg from "@/pictures/svg/tube-spinner.svg";
 import Image from "next/image";
+import NavBar from "@/components/navigation/NavBar";
 // import styles from "./page.module.css";
 
 export default function Home() {
-  const [drawerState, setDrawerState] = useState(false);
   const [isLogin, isLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [products, setProducts] = useState([]);
-
-  const drawerToggle = () => {
-    setDrawerState(!drawerState);
-  };
 
   useEffect(() => {
     getAllProduct()
@@ -64,67 +60,7 @@ export default function Home() {
       className="sectionHomepage"
       style={{ position: "relative", minHeight: "100vh" }}
     >
-      <nav className="grid grid_cols-3 w-full">
-        <div onClick={drawerToggle} className="drawer-menu_toggle">
-          <IconComponent
-            name="GiHamburgerMenu"
-            size="20px"
-            color="#121212"
-            className=""
-          />
-        </div>
-        <div className="text-align-center w-full">
-          <Link href="/">
-            <h2>Holla!</h2>
-          </Link>
-        </div>
-        <div className="top-navigation_right-menu">
-          <ul className="top-navigation_right-menu--list">
-            <li className="text-light">Search</li>
-            <li className="text-light">
-              {isLogin ? (
-                <a href="/pages">Account</a>
-              ) : (
-                <a href="/pages">Login</a>
-              )}
-            </li>
-            {isLogin ? (
-              <li className="w-max">
-                <button className="mx-auto" onClick={handleLogout}>
-                  Logout
-                </button>
-              </li>
-            ) : (
-              <li className="" style={{ display: "none" }}></li>
-            )}
-            <li
-              className="text-light"
-              style={{ visibility: "hidden", height: "0", width: "0" }}
-            >
-              Cart
-            </li>
-          </ul>
-        </div>
-      </nav>
-      {drawerState ? (
-        <div
-          style={{
-            backgroundColor: "#181818b3",
-            display: drawerState ? "block" : "none",
-          }}
-          className="drawer-wrapper"
-        >
-          <div
-            className="w-full text-align-right"
-            style={{ padding: "8px 16px" }}
-          >
-            <button onClick={drawerToggle} className="text-light">
-              [close]
-            </button>
-          </div>
-          <MenuDrawer />
-        </div>
-      ) : null}
+      <NavBar />
       <ImageBanner image={banner} />
       {/* <div className={stylesProduct['product-grid']}> */}
       {isLoading ? (

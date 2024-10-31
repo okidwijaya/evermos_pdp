@@ -18,9 +18,12 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import loadingsvg from "@/pictures/svg/tube-spinner.svg";
+import { useParams } from "next/navigation";
+import Zoom from 'react-medium-image-zoom'
+import 'react-medium-image-zoom/dist/styles.css'
 
-function Page({ params }) {
-  const { productId } = params;
+export default function Page({ params }) {
+  const { productId } = useParams();
   const [customSettings, setCustomSettings] = useState({});
   const [product, setProduct] = useState(null);
   const [products, setProducts] = useState([]);
@@ -28,6 +31,8 @@ function Page({ params }) {
   const [isLoading, setIsLoading] = useState(true);
   const [collapsibleDescription, setCollapsibleDescription] = useState(true);
   const [collapsibleSize, setCollapsibleSize] = useState(false);
+  const [isWishlist, setWishlist] = useState(false);
+  // const { productId } = params;
   console.log(productId);
 
   useEffect(() => {
@@ -94,6 +99,16 @@ function Page({ params }) {
     ),
   };
 
+  const addWishlist = () => {
+    if (!isWishlist) {
+      setWishlist(true);
+      console.log(isWishlist);
+    } else {
+      setWishlist(false);
+      console.log(isWishlist);
+    }
+  };
+
   const showDescription = () => {
     if (!collapsibleDescription) {
       setCollapsibleDescription(true);
@@ -144,11 +159,13 @@ function Page({ params }) {
                     {product.images.length > 0 ? (
                       product.images.map((image, index) => (
                         <div key={index} className={styles["pdp_imgDetail"]}> 
+                        <Zoom>
                           <Image
                             src={image}
                             priority={false}
                             alt="placeholder image"
                           />
+                        </Zoom>
                         </div>
                       ))
                     ) : (
@@ -165,6 +182,7 @@ function Page({ params }) {
                     )
                     : (
                       <div className={styles["pdp_imgDetail"]}> 
+                      <Zoom>
                       <Image
                         src={product.images[0].src}
                         priority={false}
@@ -172,6 +190,7 @@ function Page({ params }) {
                         objectFit="cover"
                         alt="placeholder image"
                       />
+                      </Zoom>
                       </div>
                     )
                   }
@@ -207,7 +226,7 @@ function Page({ params }) {
                 <p className={styles["pdp_variant-header"]}>Variant</p>
                 <div
                   style={{
-                    gridTemplateColumns: `repeat(${product.variants.length}, 35px)`,
+                    gridTemplateColumns: `repeat(${product.variants.length}, 24px)`,
                   }}
                   className={styles["pdp_variant-content"]}
                 >
@@ -260,7 +279,7 @@ function Page({ params }) {
                 </div>
               </div>
               <div className={styles["pdp_cta-container"]}>
-                <button className={`${styles.btn} ${styles.add_to_wishlist}`}>
+                <button onClick={() => addWishlist()} className={`${styles.btn} ${styles.add_to_wishlist} ${isWishlist ? '': styles.onWishlist}`}>
                   <IconComponent
                     name="CiHeart"
                     size="28px"
@@ -390,5 +409,3 @@ function Page({ params }) {
     </>
   );
 }
-
-export default Page;

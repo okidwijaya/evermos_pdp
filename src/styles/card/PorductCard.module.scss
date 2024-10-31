@@ -58,11 +58,13 @@
         }
 
         .wishlist_btn:hover{
-            // background-color: red;
+            // background-color: #C7253E;
         }
 
         .onWishlist svg, .onWishlist svg path{
-            fill: red;
+            fill: #C7253E;
+            stroke-width: 1.2;
+            stroke: #C7253E;
         }
     }
     
@@ -81,11 +83,29 @@
             padding-bottom: 7px;
         }
         
-        .btn_buynow:hover{
-            font-weight: 600;
-            background-color: map-get(vars.$base-theme-color, primary);
-            color: map-get(vars.$base-theme-color, quaternary);
+        .btn_buynow{
+            background-color: map-get(vars.$base-theme-color, defaultWhite);
+            color: map-get(vars.$base-theme-color, quinary);
+            
+            &:hover{
+                background-color: map-get(vars.$base-theme-color, primary);
+                color: map-get(vars.$base-theme-color, quaternary);
+                font-weight: 600;
+                position: relative;
+            }
+
+            // &:hover::after{
+            //     content: "";
+            //     position: absolute;
+            //     width: calc(100% - 8px);
+            //     border: 2px solid map-get(vars.$base-theme-color, quaternary);
+            //     top: 2px;
+            //     left: 2px;
+            //     height: calc(100% - 8px);
+            //     border-radius: map-get(vars.$border-round, small);
+            // }
         }
+
         
         @media screen and (max-width: map-get(vars.$breakpoints, large)) {
             @include make-grid(1, 1fr, 1rem);
@@ -111,9 +131,9 @@
     .label{
         border-radius: map-get(vars.$border-round, small);
         border: map-get(vars.$border-color, primary);
-        color: map-get(vars.$base-theme-color, primary);
-        background-color: map-get(vars.$base-theme-color, tertiary);
-        padding: 1px 2px;
+        background-color: map-get(vars.$base-theme-color, primary);
+        color: map-get(vars.$base-theme-color, tertiary);
+        padding: 1px 8px;
         font-size: map-get(vars.$base-theme-font, base);
     }
 

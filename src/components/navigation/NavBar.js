@@ -1,18 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import MenuDrawer from "@/components/navigation/DrawerMenu";
 import IconComponent from "@/components/icon/IconComponents";
 import Link from "next/link";
+import '@/app/page.module.css'
 
 function NavBar() {
     const [drawerState, setDrawerState] = useState(false);
     const [isLogin, isLoggedIn] = useState(false);
+    const [isSticky, setSticky] = useState(false);
 
     const drawerToggle = () => {
         setDrawerState(!drawerState);
     };
+
+    const handleStickyNavigation = () => {
+      console.log(window.scrollY)
+      window.scrollY > 1 ? setSticky(true) : setSticky(false);
+    }
+
+    useEffect(() => {
+      window.addEventListener('scroll', handleStickyNavigation)
+    },[])
   return (
-    <>
+    <div className={`${isSticky ? 'stickyNavigationTop' : ''}`}>
       <nav className="grid grid_cols-3 w-full">
         <div onClick={drawerToggle} className="drawer-menu_toggle">
           <IconComponent
@@ -29,12 +40,12 @@ function NavBar() {
         </div>
         <div className="top-navigation_right-menu">
           <ul className="top-navigation_right-menu--list">
-            <li className="text-light">Search</li>
-            <li className="text-light">
+            <li className="text-light searchButtonNavbar">Search</li>
+            <li className="text-light loginButtonNavbar">
               {isLogin ? (
-                <a href="/pages">Account</a>
+                <Link href="/pages">Account</Link>
               ) : (
-                <a href="/pages">Login</a>
+                <Link href="/pages">Login</Link>
               )}
             </li>
             {isLogin ? (
@@ -48,7 +59,7 @@ function NavBar() {
             )}
             <li
               className="text-light"
-              style={{ visibility: "hidden", height: "0", width: "0" }}
+              style={{ display: "none"}}
             >
               Cart
             </li>
@@ -74,7 +85,7 @@ function NavBar() {
             <MenuDrawer />
           </div>
         ) : null}
-    </>
+    </div>
   );
 }
 

@@ -11,12 +11,12 @@
   }
 
 
-@keyframes slideInFromTop {
+  @keyframes slideInFromRight {
     0% {
-      transform: translateY(-100%);
+      transform: translateX(100%);
     }
     100% {
-      transform: translateY(0);
+      transform: translateX(0);
     }
   }
   
@@ -27,7 +27,7 @@
         align-items: start;
         
         .pdp_left-content{
-            animation: 1s ease-in 0s 1 slideInFromTop;
+            animation: 1s ease-out 0s 1 slideInFromLeft;
             height: 100%;
             @include card-width(100%, 100%);
             
@@ -86,7 +86,7 @@
         }
 
         .pdp_right-content{
-            animation: 1s ease-out 0s 1 slideInFromLeft;
+            animation: 1s ease-in 0s 1 slideInFromRight;
             padding: 0 1rem 1rem 1rem;
             @include card-width(100%, 450px);
             @include make-grid(1, 1fr, 1.5rem);
@@ -216,10 +216,24 @@
                 .btn.add_to_cart:hover{
                     background-color: map-get(vars.$base-theme-color, quaternary);
                     border: 2px solid map-get(vars.$base-theme-color, primary);
+                    padding: 0.94rem;
                 }
+                
+                .onWishlist{
+                    border: 2px solid transparent;
+                    background-color: #C7253E !important;
+                    color: map-get(vars.$base-theme-color, quaternary) !important;
+                }
+
                 .btn.add_to_wishlist:hover{
                     background-color: map-get(vars.$base-theme-color, primary);
                     color: map-get(vars.$base-theme-color, quaternary);
+                }
+
+                .onWishlist svg{
+                    fill: map-get(vars.$base-theme-color, quaternary) !important;
+                    stroke-width: 1.2;
+                    stroke: map-get(vars.$base-theme-color, quaternary) !important;
                 }
 
                 .btn.add_to_wishlist:hover svg{
@@ -229,15 +243,15 @@
             
             .buy_now{
                 padding: 1rem;
-                background-color: map-get(vars.$base-theme-color, Quinary);
+                background-color: map-get(vars.$base-theme-color, primary);
                 color: map-get(vars.$base-theme-color, tertiary);
                 max-width: 100%;
             }
             
             .btn.buy_now:hover{
-                background-color: map-get(vars.$base-theme-color, tertiary);
-                color: map-get(vars.$base-theme-color, Quinary);
+                background-color: map-get(vars.$base-theme-color, Quinary);
                 border: 2px solid map-get(vars.$base-theme-color, primary);
+                padding: 0.94rem;
             }
             
             .pdp_collapsible{
@@ -258,6 +272,7 @@
                 .pdp_collapsible-head:hover{
                     background-color: map-get(vars.$base-theme-color, quaternary);
                     border: 2px solid map-get(vars.$base-theme-color, primary);
+                    padding: 0.44rem 0.94rem;
                 }
                 
                 .pdp_collapsible-content{
